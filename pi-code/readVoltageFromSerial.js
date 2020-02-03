@@ -23,7 +23,7 @@ const postData = (tempObj) => {
 }
 
 
-// Read serial temperature data sent from arduino via USB
+// create and POST new temp object
 const ReadSerialData = (data) => {
     console.log(data);
     const temp = {
@@ -34,6 +34,10 @@ const ReadSerialData = (data) => {
     }
     postData(temp)
 }
+
+// Read serial temperature data sent from arduino via USB
+// TO WORK ON R-Pi - change 'COM3' to '/dev/ttyAMA0' (or whichever USB port the r-Pi is using)
+// AND - change 'console.log('port opened')' to 'baudrate: 9600' 
 const SerialPort = require('serialport');
 const port = new SerialPort('COM3', () => {
     console.log('port opened');
