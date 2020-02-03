@@ -2,7 +2,7 @@ const axios = require("axios");
 const remoteURL = "https://front-end-capstone-6c028.firebaseio.com"
 const timeout = process.argv[2]
 
-//helper functions to convert incoming serial sensor data from voltage to degrees celcius and farenheit, respectively
+// helper functions to convert incoming serial sensor data from voltage to degrees celcius and degrees farenheit
 const voltageToCel = (voltage) => {
     const celcius = ((voltage * 1000) - 500) / 10
     return celcius
@@ -13,7 +13,7 @@ const voltagetoFar = (voltage) => {
     return farenheit
 }
 
-//dummy data until breakout board for raspberry pi arrives
+// dummy data
 const temps = [
     {
         voltage: 0.73,
@@ -101,16 +101,16 @@ const temps = [
     }
 ]
 
-//get random item from array of dummy data
+// get random item from array of dummy data
 const getRandomTemp = () => {
     const randomIndex = Math.floor(Math.random() * temps.length)
     const randomTemp = temps[randomIndex]
     return randomTemp
 }
 
-//posts random item from array of dummy data to firebase real-time db 
-//at an interval specified when running this script
-//or every 10 seconds if no interval is specified
+// POST random item from array of dummy data to firebase real-time db 
+// specify interval (in milliseconds) for POST operation by passing it as an argument when running from command line
+// if no interval is specified, it is set to 10 seconds by default
 setInterval(() => {
     const temp = getRandomTemp();
     axios.post(`${remoteURL}/appData.json`, {
