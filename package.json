@@ -5,6 +5,7 @@
   "dependencies": {
     "chart.js": "^2.9.3",
     "firebase": "^6.6.2",
+    "npm-force-resolutions": "0.0.3",
     "re-base": "^4.0.0",
     "react": "^16.12.0",
     "react-chartjs-2": "^2.9.0",
@@ -12,7 +13,11 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.1"
   },
+  "resolutions": {
+    "minimist": ">=1.2.3"
+  },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
